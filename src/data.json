@@ -1,0 +1,90 @@
+{
+    "tasks" : [
+        { 
+            "placeholder": "Введите ваше имя и возраст через пробел...", 
+            "settings" : { },
+            "text": "Создайте программу, которая просит пользователя ввести его имя и возраст, а после ввода отображает на экране следующее сообщение: Ваше имя: Иван. Вы отметите столетие через 95 лет.", 
+            "code": "function isCentury(x){\n\tconst dataArray = x.split(' ');\n\treturn `Ваше имя: ${dataArray[0]}. Вы отметите столетие через ${100 - dataArray[1]}.`;\n}"
+        },
+        { 
+            "placeholder": "Введите число...", 
+            "settings" : { },
+            "text": "Спросите у пользователя номер. В зависимости от того, является ли число четным или нечетным, распечатайте соответствующее сообщение пользователю. Модифицируйте программу, чтобы дополнительно выводилось сообщение, что число кратно 4.",
+            "code": "function isEven(x){\n\tif(x % 2 ===0 && x % 4 === 0){\n\t\treturn `Число ${x} четное. Число кратно 4.`;\n\t}else if(x % 2 === 0){\n\t\treturn `Число ${x} четное.`;\n\t}else{\n\t\treturn `Число ${x} нечетное.`;\n\t}\n}"
+        },
+        {  
+            "placeholder": "Введите число...", 
+            "settings" : { },
+            "text": "Задайте последовательность, например 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 и напишите программу, которая выведет все элементы списка, которые меньше 5. Вместо того, чтобы печатать элементы один за другим, создайте новый список, в котором все элементы менее 5, и распечатайте этот новый список. Спросите у пользователя число и выведите элементы списка, которые меньше этого числа.",
+            "code": "Также в 'сложной' версии используется генератор массива из задачи №5. \nfunction isLess(x){\n\tconst defaultData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];\n\tconst newData = defaultData.filter((number) => {\n\t\treturn number < x;\n\t});\n\treturn newData.join(', ');\n}"
+        },
+        { 
+            "placeholder": "Введите число...", 
+            "settings" : { },
+            "text": "Создайте программу, которая запрашивает у пользователя число, а затем выводит список всех делителей этого числа. (Делитель, это число, которое без остатка делится на другое число. Например, 13 является делителем 26.)",
+            "code": "function isDividers(x){\n\tconst dividers = [];\n\tfor(let i = 1; i<=x; i++) {\n\t\tif(x % i === 0) {\n\t\t\tdividers.push(i);\n\t\t}\n\t}\n\treturn dividers.join(', ');\n}"
+        },
+        { 
+            "settings": { "inputNotNeed": true },
+            "text": "Задайте два списка и напишите программу, которая возвращает список, с элементами, присутствующими в обих списках. Убедитесь, что Ваша программа работает со списками разной длины (длины a и b не равны). Модифицируйте программу так, чтобы списки генерировались автоматически и заполнялись случайными числами.", 
+            "code": "function randomNumber(){\n\treturn Math.floor(Math.random() * (100 - 1)) + 1;\n}\nfunction generateArray(){\n\tconst newArray = [];\n\tconst arraySize = randomNumber();\n\tfor(let i = 1; i <= arraySize; i++){\n\t\tnewArray.push(randomNumber());\n\t}\n\treturn newArray;\n}\nfunction findCommon() {\n\tconst array = generateArray().concat(generateArray());\n\tvar object = {};\n\tarray.forEach(element => {\n\t\tobject[element] = true;\n\t});\n\treturn Object.keys(object).join(', ');\n}"
+        },
+        { 
+            "placeholder": "Введите слово...", 
+            "settings" : { },
+            "text": "Напишите программу, которая просит пользователя ввести слово, а затем выводит сообщение, является ли введённое слово палиндромом или нет. (Палиндром представляет собой строку, которая одинаково читаются слева направо и справа налево, например “боб”, “искать такси”, “Олесе весело”, “нажал кабан на баклажан”).",
+            "code": "function isPalindrome(x) {\n\tconst letters = x.replace(/ /g, '').toLowerCase().split('');\n\treturn letters.join('') === letters.reverse().join('') ? `${x.trim()}' - палиндром.` : `'${x.trim()}' - не палиндром.`;\n}" 
+        },
+        { 
+            "settings": { "inputNotNeed": true },
+            "text": "Задайте список, сохраненный в переменной: a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]. Напишите программу, которая на основании него создаст новый, содержащий только четные элементы этого списка.",
+            "code": "Также используется генератор массива из задачи №5.\nfunction doEvenArray(){\n\tconst newData = generateArray().filter((number) => {\n\t\treturn number % 2 === 0;\n\t});\n\treturn newData.join(', ');\n}" 
+        },
+        { 
+            "placeholder": "Ваш ход...",
+            "settings" : { },
+            "text": "Сделайте игру для двух игроков Камень-Ножницы-Бумага. (Подсказка: программа поочередно просит игроков ввести “камень”, “ножницы”, “бумага”, сравнивает их, распечатывает поздравительное послание победителю и предлагает начать новую игру).",
+            "code": "if(one === two) {\n\tgameResult = 'Ничья!';\n}else if(one === 'камень') {\n\tif(two === 'ножницы') {\n\t\tgameResult = 'Игрок 1 победил!';\n\t}else {\n\t\tgameResult = 'Игрок 2 победил!';\n\t}\n}else if(one === 'бумага') {\n\tif(two === 'камень') {\n\t\tgameResult = 'Игрок 1 победил!';\n\t}else {\n\t\tgameResult = 'Игрок 2 победил!';\n\t}\n}else if(one === 'ножницы') {\n\tif(two === 'бумага') {\n\t\tgameResult = 'Игрок 1 победил!';\n\t}else {\n\t\tgameResult = 'Игрок 2 победил!';\n\t}\n}" 
+        },
+        { 
+            "placeholder": "Введите число...", 
+            "settings" : { },
+            "text": "Сгенерируйте случайное число от 1 до 9 (включая 1 и 9), но не выводите на экран. Попросите пользователя угадать число (ввести его), а затем (3) сообщите ему, угадал ли он. Если нет – выведите подсказку “загаданное число меньше” или “загаданное число больше” и (4) попросите его ввести другое число. Модифицируйте программу так, чтобы игра прерывалась при вводе слова “выход”. Модифицируйте программу, чтобы вёлся подсчёт попыток и в конце выводилось сообщение с их количеством.",
+            "code": "if(this.state.number === +inputValue) {\n\tdocument.getElementById('d' + id).innerHTML = `Вы угадали! Конец игры. Попыток: ${this.state.task9.countAttempt + 1}.`;\n\tthis.setState({\n\t\tnumber: Math.floor(Math.random() * (10 - 1)) + 1,\n\t\ttask9: {\n\t\t\tcountAttempt: 0\n\t\t}\n\t});\n}else{\n\tthis.setState({\n\t\ttask9: {\n\t\t\tcountAttempt: this.state.task9.countAttempt + 1\n\t\t}\n\t});\n\tdocument.getElementById('d' + id).innerHTML = `Вы не угадали! Число ${this.state.number > +inputValue ? 'больше' : 'меньше'}.`\n}"
+        },
+        { 
+            "placeholder": "Введите число...", 
+            "settings" : { },
+            "text": "Спросите у пользователя число и определите, является ли оно простым или нет. (Простое число – это число, которое не имеет делителей). Реализуйте решение в виде функции: isPrime(num), которая возвращает True, если число простое и False, если нет.", 
+            "code": "function isPrime(x){\n\tfor(let i = 2; i < x; i++){\n\t\tif(x % i === 0){\n\t\t\treturn 'Ложь';\n\t\t}\n\t}\n\treturn 'Правда';\n}"
+        },
+        { 
+            "placeholder": "Введите последовательность чисел через пробел...", 
+            "settings" : { },
+            "text": "Напишите функцию, которая получает на вход список (например, a = [5, 10, 15, 20, 25]) И возвращает новый список, содержащий только первый и последние элементы исходного списка.",
+            "code": "function doFormatArray(x) {\n\tconst newArray = x.trim().split(' ');\n\tif(newArray.length <= 2){\n\t\treturn newArray.join(', ');\n\t}else{\n\t\tnewArray.splice(1, newArray.length-2);\n\t\treturn newArray.join(', ..., ');\n\t}\n}" 
+        },
+        { 
+            "placeholder": "Введите число...", 
+            "settings" : { },
+            "text": "Напишите функцию, которая рассчитывает n первых чисел последовательности Фибоначчи. (Чи́сла Фибона́ччи – элементы последовательности, в которой первые два числа равны либо 1 и 1, либо 0 и 1, а каждое последующее число равно сумме двух предыдущих чисел. Например, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144).",
+            "code": "function doFibonacciSeries(n) {\n\tconst newArray = [1, 1];\n\tif(n === 1){\n\t\treturn 1;\n\t}\n\tfor(let i = 3; i <= n; i++){\n\t\tnewArray.push(newArray[i-3]+newArray[i-2]);\n\t}\n\treturn newArray.join(', ');\n}" 
+        },
+        { 
+            "settings": { "inputNotNeed": true },
+            "text": "Напишите программу, которая выводит на экран числа от 1 до 100. При этом вместо чисел, кратных трем, программа должна выводить слово Fizz, а вместо чисел, кратных пяти — слово Buzz. Если число кратно пятнадцати, то программа должна выводить слово FizzBuzz.",
+            "code": "const newArray = [];\nfor(let i = 1; i <= 100; i++) {\n\tnewArray.push(i % 15 === 0 ? 'FizzBuzz' : i % 5 === 0 ? 'Buzz' : i % 3 === 0 ? 'Fizz' : i);\n}" 
+        },
+        { 
+            "placeholder": "Введите последовательность чисел через пробел...", 
+            "settings" : { "linkNeed": true },
+            "text": "Напишите функцию , которая в качестве аргумента получает список и возвращает новый список содержащий элементы первого за исключением дублирующих. (2) Напишите программу, использующую функцию (1) и сохраняющую получившийся список в файл.",
+            "code": "function download(text, name, type) {\n\tvar a = document.getElementById('l'+id);\n\tvar file = new Blob([text], {type: type});\n\ta.href = URL.createObjectURL(file);\n\ta.download = name;\n}\nfunction doArray(x) {\n\tconst newArray = x.trim().split(' ');\n\tvar object = {};\n\tnewArray.forEach(element => {\n\t\tobject[element] = true;\n\t});\n\tdownload(Object.keys(object).join(', '), 'file.txt', 'text/plain');\n\treturn Object.keys(object).join(', ');\n}" 
+        },
+        { 
+            "settings": { "inputNotNeed": true },
+            "text": "Напишите генератор паролей. Программа должна генерировать сильные пароли, состоящие из последовательности случайных символов, включающих: прописные и строчные буквы английского алфавита, числа и знаки пунктуации (!'No;%:?*()_ < >).",
+            "code": "const object = {\n\t1:'q', 2:'w', 3:'e', 4:'r', 5:'t', 6:'y', 7:'u', 8:'i', 9:'o', 10:'p',\n\t11:'a', 12:'s', 13:'d', 14:'f', 15:'g', 16:'h', 17:'j', 18:'k', 19:'l', 20:'z',\n\t21:'x', 22:'c', 23:'v', 24:'b', 25:'n', 26:'m', 27:'1', 28:'2', 29:'3', 30:'4',\n\t31:'5', 32:'6', 33:'7', 34:'8', 35:'9', 36:'0', 37:'!', 38:'№', 39:'$', 40:'%',\n\t41:'^', 42:'&', 43:'*', 44:'(', 45:')', 46:'-', 47:'+', 48:'?', 49:';', 50:':'\n};\nconst randValue = Math.floor(Math.random() * (21 - 10)) + 10;\nconst passwordArray = [];\nfor(let i = 0; i < randValue; i++) {\n\tpasswordArray.push(object[Math.floor(Math.random() * (51 - 1)) + 1])\n}" 
+        }
+    ]
+}
